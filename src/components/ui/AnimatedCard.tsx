@@ -52,6 +52,7 @@ const AnimatedCard = ({
           const glareX = (x / width) * 100;
           const glareY = (y / height) * 100;
           glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 80%)`;
+          glare.style.opacity = '1';
         }
       }
     };
@@ -59,6 +60,12 @@ const AnimatedCard = ({
     const handleMouseLeave = () => {
       // Reset card transform
       card.style.transform = '';
+      
+      // Hide glare
+      const glare = card.querySelector('.card-glare') as HTMLElement;
+      if (glare) {
+        glare.style.opacity = '0';
+      }
     };
     
     // Intersection Observer for initial animation
@@ -102,7 +109,7 @@ const AnimatedCard = ({
       )}
       style={{ 
         transformStyle: 'preserve-3d', 
-        transition: 'transform 0.1s ease-out, opacity 0.6s ease-out, transform 0.6s ease-out',
+        transition: 'transform 0.1s ease-out, opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
         ...style 
       }}
     >

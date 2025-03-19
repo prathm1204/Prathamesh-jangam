@@ -63,12 +63,12 @@ const Cursor = () => {
     <>
       <div 
         ref={cursorRef}
-        className={`fixed top-0 left-0 w-2 h-2 bg-primary rounded-full pointer-events-none z-[999] transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-100 mix-blend-difference ${isClicking ? 'scale-150' : ''}`}
+        className={`fixed top-0 left-0 w-2 h-2 bg-accent rounded-full pointer-events-none z-[999] transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-100 ${isClicking ? 'scale-150' : ''}`}
         style={{ transition: 'transform 0.1s ease-out' }}
       />
       <div 
         ref={cursorRingRef}
-        className={`fixed top-0 left-0 w-6 h-6 border border-primary rounded-full pointer-events-none z-[999] transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 mix-blend-difference ${isClicking ? 'scale-75 opacity-50' : ''} ${isHovering ? 'scale-350 opacity-50' : ''}`}
+        className={`fixed top-0 left-0 w-6 h-6 border border-accent rounded-full pointer-events-none z-[999] transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${isClicking ? 'scale-75 opacity-50' : ''} ${isHovering ? 'scale-350 opacity-50' : ''}`}
         style={{ transition: 'transform 0.3s ease-out, opacity 0.3s ease-out, width 0.3s ease-out, height 0.3s ease-out' }}
       />
     </>

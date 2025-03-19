@@ -53,13 +53,13 @@ const Projects = () => {
     <section id="projects" ref={sectionRef} className="py-20 md:py-32">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <p className="text-primary inline-block rounded-full px-4 py-1 border border-primary/20 mb-6 font-medium animate-on-scroll">
+          <p className="text-accent inline-block rounded-full px-4 py-1 border-shimmer mb-6 font-medium animate-on-scroll">
             Portfolio
           </p>
           <AnimatedText 
             text="Featured Projects" 
             tag="h2" 
-            className="text-3xl md:text-4xl font-display font-bold mb-6"
+            className="text-3xl md:text-4xl font-display font-bold mb-6 text-gradient"
           />
           <p className="text-muted-foreground animate-on-scroll" style={{ transitionDelay: '0.2s' }}>
             Explore a selection of my recent work showcasing my skills and experience.
@@ -74,7 +74,7 @@ const Projects = () => {
               animateY={true}
               style={{ transitionDelay: `${index * 0.2}s` }}
             >
-              <div className="glass rounded-xl overflow-hidden h-full flex flex-col">
+              <div className="glass rounded-xl overflow-hidden h-full flex flex-col shadow-lg shadow-accent/5">
                 <AspectRatio ratio={16/9} className="overflow-hidden">
                   <img 
                     src={project.image} 
@@ -89,7 +89,7 @@ const Projects = () => {
                     {project.technologies.map((tech) => (
                       <span 
                         key={tech} 
-                        className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10"
+                        className="text-xs font-medium px-3 py-1 rounded-full bg-accent/10 text-accent"
                       >
                         {tech}
                       </span>
@@ -106,7 +106,7 @@ const Projects = () => {
             href="https://github.com/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors interactive animate-on-scroll"
+            className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full font-medium hover:bg-accent/90 transition-colors interactive animate-on-scroll shadow-lg shadow-accent/20"
             style={{ transitionDelay: '0.6s' }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
