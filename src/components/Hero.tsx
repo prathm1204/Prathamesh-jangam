@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import AnimatedText from './ui/AnimatedText';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import TechLogo from './ui/TechLogo';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -65,15 +66,43 @@ const Hero = () => {
           data-speed-x="-10"
           data-speed-y="15"
         />
+        
+        {/* Tech elements */}
+        <div 
+          className="absolute top-40 right-1/3"
+          data-speed-x="5"
+          data-speed-y="15"
+        >
+          <TechLogo variant="circuit" size={32} />
+        </div>
+        <div 
+          className="absolute bottom-40 left-1/3"
+          data-speed-x="-8"
+          data-speed-y="-10"
+        >
+          <TechLogo variant="code" size={28} />
+        </div>
+        <div 
+          className="absolute top-1/2 right-1/5"
+          data-speed-x="12"
+          data-speed-y="-8"
+        >
+          <TechLogo variant="cpu" size={24} />
+        </div>
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8 flex flex-col items-center">
-            <Avatar className="w-32 h-32 mb-6 border-4 border-accent/20 animate-pulse-glow">
-              <AvatarImage src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=1600&auto=format&fit=crop" alt="Prathamesh Tangam" />
-              <AvatarFallback className="bg-accent/20">PT</AvatarFallback>
-            </Avatar>
+            <div className="relative">
+              <Avatar className="w-32 h-32 mb-6 border-4 border-accent/20 animate-pulse-glow">
+                <AvatarImage src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=1600&auto=format&fit=crop" alt="Prathamesh Tangam" />
+                <AvatarFallback className="bg-accent/20">PT</AvatarFallback>
+              </Avatar>
+              <div className="absolute -top-2 -right-2">
+                <TechLogo variant="cpu" size={20} />
+              </div>
+            </div>
             
             <p className="text-accent inline-block rounded-full px-4 py-1 border-shimmer border-accent/20 mb-6 font-medium animate-fade-in">
               Full Stack Developer

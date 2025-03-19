@@ -8,6 +8,7 @@ import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Cursor from '../components/ui/Cursor';
+import TechBackground from '../components/ui/TechBackground';
 
 const Index = () => {
   // Add smooth scrolling behavior
@@ -53,6 +54,9 @@ const Index = () => {
   
   return (
     <div className="relative">
+      {/* Technical Background */}
+      <TechBackground density={20} speed={0.5} />
+      
       {/* Custom cursor */}
       <Cursor />
       
