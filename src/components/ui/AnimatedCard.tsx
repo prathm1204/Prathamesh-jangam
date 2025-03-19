@@ -8,6 +8,7 @@ interface AnimatedCardProps {
   glareOnHover?: boolean;
   tiltAmount?: number;
   animateY?: boolean;
+  style?: React.CSSProperties;
 }
 
 const AnimatedCard = ({ 
@@ -15,7 +16,8 @@ const AnimatedCard = ({
   className = '',
   glareOnHover = true,
   tiltAmount = 5,
-  animateY = false
+  animateY = false,
+  style = {}
 }: AnimatedCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
@@ -86,7 +88,11 @@ const AnimatedCard = ({
         animateY && !isInView ? "translate-y-10 opacity-0" : "translate-y-0 opacity-100",
         className
       )}
-      style={{ transformStyle: 'preserve-3d', transition: 'transform 0.1s ease-out, opacity 0.6s ease-out, transform 0.6s ease-out' }}
+      style={{ 
+        transformStyle: 'preserve-3d', 
+        transition: 'transform 0.1s ease-out, opacity 0.6s ease-out, transform 0.6s ease-out',
+        ...style 
+      }}
     >
       {children}
       {glareOnHover && (
