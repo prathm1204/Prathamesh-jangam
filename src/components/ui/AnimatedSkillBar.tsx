@@ -5,9 +5,10 @@ interface AnimatedSkillBarProps {
   name: string;
   percentage: number;
   delay?: number;
+  icon?: React.ReactNode;
 }
 
-const AnimatedSkillBar = ({ name, percentage, delay = 0 }: AnimatedSkillBarProps) => {
+const AnimatedSkillBar = ({ name, percentage, delay = 0, icon }: AnimatedSkillBarProps) => {
   const progressRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
   
@@ -38,7 +39,10 @@ const AnimatedSkillBar = ({ name, percentage, delay = 0 }: AnimatedSkillBarProps
   return (
     <div className="mb-6">
       <div className="flex justify-between mb-2">
-        <span className="font-medium">{name}</span>
+        <div className="flex items-center gap-2">
+          {icon && <span className="text-accent">{icon}</span>}
+          <span className="font-medium">{name}</span>
+        </div>
         <span className="text-muted-foreground">{percentage}%</span>
       </div>
       <div 

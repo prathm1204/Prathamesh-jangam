@@ -9,6 +9,7 @@ import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Cursor from '../components/ui/Cursor';
 import TechBackground from '../components/ui/TechBackground';
+import TechLogo from '../components/ui/TechLogo';
 
 const Index = () => {
   // Add smooth scrolling behavior
@@ -52,10 +53,33 @@ const Index = () => {
     };
   }, []);
   
+  // Fixed tech logos in corners of the page
+  const fixedLogos = [
+    { variant: 'code', size: 20, position: 'top-4 left-4', delay: 0 },
+    { variant: 'cpu', size: 18, position: 'top-4 right-4', delay: 1 },
+    { variant: 'circuit', size: 22, position: 'bottom-4 left-4', delay: 2 },
+    { variant: 'database', size: 16, position: 'bottom-4 right-4', delay: 3 },
+  ];
+  
   return (
     <div className="relative">
       {/* Technical Background */}
-      <TechBackground density={20} speed={0.5} />
+      <TechBackground density={25} speed={0.5} />
+      
+      {/* Fixed Tech Logos in corners */}
+      {fixedLogos.map((logo, index) => (
+        <div
+          key={`fixed-logo-${index}`}
+          className={`fixed ${logo.position} z-10 hidden md:block`}
+          style={{ animationDelay: `${logo.delay * 0.5}s` }}
+        >
+          <TechLogo 
+            variant={logo.variant as 'circuit' | 'code' | 'cpu' | 'database'} 
+            size={logo.size} 
+            animated={true} 
+          />
+        </div>
+      ))}
       
       {/* Custom cursor */}
       <Cursor />

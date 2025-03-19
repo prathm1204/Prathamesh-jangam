@@ -3,6 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import AnimatedText from './ui/AnimatedText';
 import AnimatedSkillBar from './ui/AnimatedSkillBar';
 import AnimatedCard from './ui/AnimatedCard';
+import TechLogo from './ui/TechLogo';
+import { Database, Code, CpuIcon, Server, TerminalSquare } from 'lucide-react';
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -28,14 +30,14 @@ const Skills = () => {
     };
   }, []);
   
-  // Technical Skills
+  // Technical Skills with icons
   const techSkills = [
-    { name: "React.js", percentage: 90 },
-    { name: "JavaScript", percentage: 85 },
-    { name: ".NET", percentage: 80 },
-    { name: "Java", percentage: 75 },
-    { name: "CSS", percentage: 85 },
-    { name: "SQL", percentage: 75 }
+    { name: "React.js", percentage: 90, icon: <Code size={18} /> },
+    { name: "JavaScript", percentage: 85, icon: <Code size={18} /> },
+    { name: ".NET", percentage: 80, icon: <Server size={18} /> },
+    { name: "Java", percentage: 75, icon: <TerminalSquare size={18} /> },
+    { name: "CSS", percentage: 85, icon: <Code size={18} /> },
+    { name: "SQL", percentage: 75, icon: <Database size={18} /> }
   ];
   
   // Soft Skills
@@ -46,10 +48,22 @@ const Skills = () => {
     { name: "Teamwork", percentage: 85 }
   ];
   
-  // Marquee skills
+  // Marquee skills with tech variants
   const marqueeSkills = [
-    "React", "JavaScript", "TypeScript", "Node.js", "Redux", "HTML", "CSS", 
-    "Tailwind CSS", "SQL", ".NET", "Java", "GitHub", "REST API", "React Native"
+    { name: "React", variant: "code" },
+    { name: "JavaScript", variant: "code" },
+    { name: "TypeScript", variant: "code" },
+    { name: "Node.js", variant: "circuit" },
+    { name: "Redux", variant: "cpu" },
+    { name: "HTML", variant: "code" },
+    { name: "CSS", variant: "code" },
+    { name: "Tailwind CSS", variant: "code" },
+    { name: "SQL", variant: "circuit" },
+    { name: ".NET", variant: "cpu" },
+    { name: "Java", variant: "circuit" },
+    { name: "GitHub", variant: "code" },
+    { name: "REST API", variant: "circuit" },
+    { name: "React Native", variant: "code" }
   ];
   
   return (
@@ -66,27 +80,29 @@ const Skills = () => {
           />
         </div>
         
-        {/* Marquee skills */}
+        {/* Marquee skills with logos */}
         <div className="mb-20 overflow-hidden animate-on-scroll">
           <div className="marquee py-6 bg-background/50 backdrop-blur-sm border-y border-primary/10">
             <div className="marquee-content">
               {marqueeSkills.map((skill, index) => (
-                <span 
+                <div 
                   key={index} 
-                  className="inline-block mx-8 text-xl font-medium text-primary/80"
+                  className="inline-flex items-center mx-8 gap-2"
                 >
-                  {skill}
-                </span>
+                  <TechLogo variant={skill.variant as 'circuit' | 'code' | 'cpu'} size={18} animated={false} />
+                  <span className="text-xl font-medium text-primary/80">{skill.name}</span>
+                </div>
               ))}
             </div>
             <div className="marquee-content" aria-hidden="true">
               {marqueeSkills.map((skill, index) => (
-                <span 
+                <div 
                   key={`dup-${index}`} 
-                  className="inline-block mx-8 text-xl font-medium text-primary/80"
+                  className="inline-flex items-center mx-8 gap-2"
                 >
-                  {skill}
-                </span>
+                  <TechLogo variant={skill.variant as 'circuit' | 'code' | 'cpu'} size={18} animated={false} />
+                  <span className="text-xl font-medium text-primary/80">{skill.name}</span>
+                </div>
               ))}
             </div>
           </div>
@@ -104,6 +120,7 @@ const Skills = () => {
                     name={skill.name}
                     percentage={skill.percentage}
                     delay={index}
+                    icon={skill.icon}
                   />
                 ))}
               </div>
@@ -128,21 +145,32 @@ const Skills = () => {
           </AnimatedCard>
         </div>
         
-        {/* Programming Languages */}
+        {/* Programming Languages with TechLogo */}
         <div className="mt-20 animate-on-scroll" style={{ transitionDelay: '0.6s' }}>
           <h3 className="text-xl font-bold mb-8 text-center">Programming Languages</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            {["JavaScript", "TypeScript", "C#", "Java", "HTML/CSS"].map((lang, index) => (
+            {[
+              { name: "JavaScript", variant: "code" },
+              { name: "TypeScript", variant: "code" },
+              { name: "C#", variant: "cpu" },
+              { name: "Java", variant: "circuit" },
+              { name: "HTML/CSS", variant: "code" }
+            ].map((lang, index) => (
               <AnimatedCard 
-                key={lang} 
+                key={lang.name} 
                 className="aspect-square"
                 glareOnHover={true}
               >
                 <div className="glass h-full rounded-xl flex flex-col items-center justify-center p-6 text-center">
                   <div className="w-12 h-12 mb-4 flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 animate-pulse-slow" style={{ animationDelay: `${index * 0.2}s` }}></div>
+                    <TechLogo 
+                      variant={lang.variant as 'circuit' | 'code' | 'cpu'} 
+                      size={28} 
+                      animated={true}
+                      className="animate-pulse-slow"
+                    />
                   </div>
-                  <span className="font-medium">{lang}</span>
+                  <span className="font-medium">{lang.name}</span>
                 </div>
               </AnimatedCard>
             ))}

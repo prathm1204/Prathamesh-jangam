@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { CircuitBoard, Code, Cpu } from 'lucide-react';
+import { CircuitBoard, Code, Cpu, Database, Server, Terminal, Laptop, HardDrive, Network } from 'lucide-react';
 
 interface TechLogoProps {
   className?: string;
-  variant?: 'circuit' | 'code' | 'cpu';
+  variant?: 'circuit' | 'code' | 'cpu' | 'database' | 'server' | 'terminal' | 'laptop' | 'harddrive' | 'network';
   size?: number;
   animated?: boolean;
 }
@@ -23,6 +23,18 @@ const TechLogo: React.FC<TechLogoProps> = ({
         return <Code size={size} className="text-accent" />;
       case 'cpu':
         return <Cpu size={size} className="text-accent" />;
+      case 'database':
+        return <Database size={size} className="text-accent" />;
+      case 'server':
+        return <Server size={size} className="text-accent" />;
+      case 'terminal':
+        return <Terminal size={size} className="text-accent" />;
+      case 'laptop':
+        return <Laptop size={size} className="text-accent" />;
+      case 'harddrive':
+        return <HardDrive size={size} className="text-accent" />;
+      case 'network':
+        return <Network size={size} className="text-accent" />;
       default:
         return <CircuitBoard size={size} className="text-accent" />;
     }
