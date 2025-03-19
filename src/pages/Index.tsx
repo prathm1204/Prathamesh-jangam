@@ -34,6 +34,18 @@ const Index = () => {
     
     document.addEventListener('click', handleAnchorClick);
     
+    // Preload critical images
+    const preloadImages = [
+      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97',
+      'https://images.unsplash.com/photo-1484417894907-623942c8ee29',
+      'https://images.unsplash.com/photo-1557821552-17105176677c'
+    ];
+    
+    preloadImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+    
     return () => {
       document.removeEventListener('click', handleAnchorClick);
     };

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import AnimatedText from './ui/AnimatedText';
 import AnimatedCard from './ui/AnimatedCard';
+import { AspectRatio } from './ui/aspect-ratio';
 
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -74,13 +75,13 @@ const Projects = () => {
               style={{ transitionDelay: `${index * 0.2}s` }}
             >
               <div className="glass rounded-xl overflow-hidden h-full flex flex-col">
-                <div className="aspect-video relative overflow-hidden">
+                <AspectRatio ratio={16/9} className="overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title} 
                     className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
                   />
-                </div>
+                </AspectRatio>
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-bold mb-3">{project.title}</h3>
                   <p className="text-muted-foreground mb-6 flex-grow">{project.description}</p>

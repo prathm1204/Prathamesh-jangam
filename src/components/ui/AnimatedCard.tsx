@@ -9,6 +9,9 @@ interface AnimatedCardProps {
   tiltAmount?: number;
   animateY?: boolean;
   style?: React.CSSProperties;
+  imageSrc?: string;
+  imageAlt?: string;
+  imageOverlay?: boolean;
 }
 
 const AnimatedCard = ({ 
@@ -17,10 +20,14 @@ const AnimatedCard = ({
   glareOnHover = true,
   tiltAmount = 5,
   animateY = false,
-  style = {}
+  style = {},
+  imageSrc,
+  imageAlt = "Card image",
+  imageOverlay = false
 }: AnimatedCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(!imageSrc);
   
   useEffect(() => {
     const card = cardRef.current;
@@ -79,6 +86,10 @@ const AnimatedCard = ({
       observer.disconnect();
     };
   }, [tiltAmount, glareOnHover]);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
   
   return (
     <div 
@@ -86,6 +97,7 @@ const AnimatedCard = ({
       className={cn(
         "relative overflow-hidden transition-all duration-500 ease-out transform",
         animateY && !isInView ? "translate-y-10 opacity-0" : "translate-y-0 opacity-100",
+        !imageLoaded && imageSrc ? "min-h-[200px] bg-muted/20" : "",
         className
       )}
       style={{ 
@@ -94,7 +106,23 @@ const AnimatedCard = ({
         ...style 
       }}
     >
-      {children}
+      {imageSrc && (
+        <div className="absolute inset-0 w-full h-full">
+          <img 
+            src={imageSrc} 
+            alt={imageAlt}
+            onLoad={handleImageLoad} 
+            className={cn(
+              "w-full h-full object-cover transition-all duration-500",
+              imageOverlay ? "opacity-60" : "opacity-100"
+            )}
+          />
+          {imageOverlay && <div className="absolute inset-0 bg-background/60" />}
+        </div>
+      )}
+      <div className={cn("relative z-10", imageSrc ? "text-white" : "")}>
+        {children}
+      </div>
       {glareOnHover && (
         <div className="card-glare absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 ease-out" />
       )}

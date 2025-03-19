@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import AnimatedText from './ui/AnimatedText';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -63,11 +64,16 @@ const Hero = () => {
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-primary inline-block rounded-full px-4 py-1 border border-primary/20 mb-6 font-medium animate-fade-in">
-            Full Stack Developer
-          </p>
-          
-          <div className="mb-8">
+          <div className="mb-8 flex flex-col items-center">
+            <Avatar className="w-32 h-32 mb-6 border-4 border-primary/20 animate-fade-in">
+              <AvatarImage src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=1600&auto=format&fit=crop" alt="Prathamesh Tangam" />
+              <AvatarFallback>PT</AvatarFallback>
+            </Avatar>
+            
+            <p className="text-primary inline-block rounded-full px-4 py-1 border border-primary/20 mb-6 font-medium animate-fade-in">
+              Full Stack Developer
+            </p>
+            
             <AnimatedText 
               text="Prathamesh Tangam" 
               tag="h1" 
