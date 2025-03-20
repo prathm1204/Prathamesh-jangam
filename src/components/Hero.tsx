@@ -96,13 +96,17 @@ const Hero = () => {
           <div className="mb-8 flex flex-col items-center">
             <div className="relative">
               <Avatar className="w-32 h-32 mb-6 border-4 border-accent/20 animate-pulse-glow">
-                <AvatarImage src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=1600&auto=format&fit=crop" alt="Prathamesh Tangam" />
+                <AvatarImage src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=1600&auto=format&fit=crop" alt="Prathamesh Chandrashekhar Jangam" />
                 <AvatarFallback className="bg-accent/20">PT</AvatarFallback>
               </Avatar>
               <div className="absolute -top-2 -right-2">
                 <TechLogo variant="cpu" size={20} />
               </div>
             </div>
+            
+            <h2 className="text-xl md:text-2xl font-medium text-accent mb-2">
+              Prathamesh Chandrashekhar Jangam
+            </h2>
             
             <p className="text-accent inline-block rounded-full px-4 py-1 border-shimmer border-accent/20 mb-6 font-medium animate-fade-in">
               Full Stack Developer
