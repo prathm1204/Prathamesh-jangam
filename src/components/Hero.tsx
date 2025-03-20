@@ -109,7 +109,7 @@ const Hero = () => {
             </p>
             
             <AnimatedText 
-              text="Prathamesh Tangam" 
+              text="Prathamesh Chandrashekhar Jangam" 
               tag="h1" 
               className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-gradient"
             />

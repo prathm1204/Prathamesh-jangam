@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import AnimatedText from './ui/AnimatedText';
 import AnimatedCard from './ui/AnimatedCard';
@@ -60,7 +59,7 @@ const Contact = () => {
         </svg>
       ),
       label: "Email",
-      value: "prathameshjtangam@gmail.com"
+      value: "prathmeshjangam31@gmail.com"
     },
     {
       icon: (
@@ -270,7 +269,7 @@ const Contact = () => {
         <div className="container mx-auto px-6">
           <div className="text-center">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Prathamesh Tangam. All rights reserved.
+              © {new Date().getFullYear()} Prathamesh Chandrashekhar Jangam. All rights reserved.
             </p>
           </div>
         </div>
