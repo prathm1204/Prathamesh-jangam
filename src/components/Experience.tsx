@@ -52,8 +52,9 @@ const Experience = () => {
     },
     {
       title: "Sernik Printer Application",
-      company: "Full Stack Developer",
-      period: "Sept 2022 - Oct 2023",
+      company: "GeniaTEQ",
+      companyUrl: "https://geniateq.com/",
+      period: "Company Project",
       description: [
         "A mobile application designed for controlling and managing thermal printers via Bluetooth.",
         "The app integrates with Bluetooth-enabled devices.",
@@ -62,7 +63,7 @@ const Experience = () => {
     },
     {
       title: "Dut Net Intern",
-      company: "Academic Internships - Pune",
+      company: "College Internship - Asma Institute of Management, Pune",
       period: "Feb 2024 - July 2024",
       description: [
         "Contributed to the development of a streamlined system for comprehensive student data management.",

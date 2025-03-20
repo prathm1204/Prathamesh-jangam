@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import AnimatedText from './ui/AnimatedText';
 import AnimatedCard from './ui/AnimatedCard';
 import { toast } from 'sonner';
+import TechBackground from './ui/TechBackground';
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -116,30 +117,38 @@ const Contact = () => {
   ];
   
   return (
-    <section id="contact" ref={sectionRef} className="py-20 md:py-32 bg-secondary/30">
-      <div className="container mx-auto px-6">
+    <section id="contact" ref={sectionRef} className="py-20 md:py-32 relative">
+      {/* Dark stylish background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/90 to-slate-900/90 -z-10"></div>
+      <TechBackground className="opacity-30" color="var(--accent)" density={20} speed={0.5} />
+      
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-accent/10 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-accent/10 to-transparent"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <p className="text-primary inline-block rounded-full px-4 py-1 border border-primary/20 mb-6 font-medium animate-on-scroll">
+          <p className="text-accent inline-block rounded-full px-4 py-1 border border-accent/30 mb-6 font-medium animate-on-scroll">
             Get in Touch
           </p>
           <AnimatedText 
             text="Let's Work Together" 
             tag="h2" 
-            className="text-3xl md:text-4xl font-display font-bold mb-6"
+            className="text-3xl md:text-4xl font-display font-bold mb-6 text-white"
           />
-          <p className="text-muted-foreground animate-on-scroll" style={{ transitionDelay: '0.2s' }}>
+          <p className="text-gray-300 animate-on-scroll" style={{ transitionDelay: '0.2s' }}>
             Feel free to reach out for collaborations or just a friendly chat.
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <AnimatedCard className="animate-on-scroll" animateY={true} style={{ transitionDelay: '0.3s' }}>
-            <div className="glass p-8 rounded-xl h-full">
-              <h3 className="text-xl font-bold mb-8">Send Me a Message</h3>
+            <div className="bg-white/10 backdrop-blur-lg border border-white/10 p-8 rounded-xl h-full shadow-xl">
+              <h3 className="text-xl font-bold mb-8 text-white">Send Me a Message</h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">
                     Name
                   </label>
                   <input
@@ -149,13 +158,13 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-background/50 border border-primary/10 focus:border-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/10 transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-colors text-white placeholder-gray-400"
                     placeholder="Your name"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">
                     Email
                   </label>
                   <input
@@ -165,13 +174,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-background/50 border border-primary/10 focus:border-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/10 transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-colors text-white placeholder-gray-400"
                     placeholder="your.email@example.com"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">
                     Message
                   </label>
                   <textarea
@@ -181,7 +190,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-background/50 border border-primary/10 focus:border-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/10 transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-colors resize-none text-white placeholder-gray-400"
                     placeholder="Your message..."
                   />
                 </div>
@@ -189,7 +198,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors disabled:opacity-70 interactive"
+                  className="w-full bg-accent text-white py-3 rounded-lg font-medium hover:bg-accent/90 transition-colors disabled:opacity-70 interactive"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
@@ -199,23 +208,23 @@ const Contact = () => {
           
           <div className="space-y-8">
             <AnimatedCard className="animate-on-scroll" animateY={true} style={{ transitionDelay: '0.4s' }}>
-              <div className="glass p-8 rounded-xl">
-                <h3 className="text-xl font-bold mb-8">Contact Information</h3>
+              <div className="bg-white/10 backdrop-blur-lg border border-white/10 p-8 rounded-xl shadow-xl">
+                <h3 className="text-xl font-bold mb-8 text-white">Contact Information</h3>
                 
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
                     <div key={index} className="flex items-start gap-4">
-                      <div className="text-primary mt-1">{info.icon}</div>
+                      <div className="text-accent mt-1">{info.icon}</div>
                       <div>
-                        <h4 className="text-sm font-medium text-muted-foreground mb-1">{info.label}</h4>
-                        <p className="font-medium">{info.value}</p>
+                        <h4 className="text-sm font-medium text-gray-400 mb-1">{info.label}</h4>
+                        <p className="font-medium text-white">{info.value}</p>
                       </div>
                     </div>
                   ))}
                 </div>
                 
-                <div className="mt-8 pt-8 border-t border-primary/10">
-                  <h4 className="text-sm font-medium text-muted-foreground mb-4">Connect with me</h4>
+                <div className="mt-8 pt-8 border-t border-white/10">
+                  <h4 className="text-sm font-medium text-gray-400 mb-4">Connect with me</h4>
                   <div className="flex gap-4">
                     {socialLinks.map((link) => (
                       <a
@@ -223,7 +232,7 @@ const Contact = () => {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full bg-background/70 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors interactive"
+                        className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-colors interactive"
                         aria-label={link.name}
                       >
                         {link.icon}
@@ -235,14 +244,14 @@ const Contact = () => {
             </AnimatedCard>
             
             <AnimatedCard className="animate-on-scroll" animateY={true} style={{ transitionDelay: '0.5s' }}>
-              <div className="glass p-8 rounded-xl">
-                <h3 className="text-xl font-bold mb-4">Download Resume</h3>
-                <p className="text-muted-foreground mb-6">
+              <div className="bg-white/10 backdrop-blur-lg border border-white/10 p-8 rounded-xl shadow-xl">
+                <h3 className="text-xl font-bold mb-4 text-white">Download Resume</h3>
+                <p className="text-gray-300 mb-6">
                   Get a copy of my resume for more details about my experience and skills.
                 </p>
                 <a 
                   href="#" 
-                  className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary/20 transition-colors interactive"
+                  className="inline-flex items-center gap-2 bg-accent/20 text-accent hover:text-white px-6 py-3 rounded-lg font-medium hover:bg-accent/40 transition-colors interactive"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -257,10 +266,10 @@ const Contact = () => {
         </div>
       </div>
       
-      <footer className="mt-20 pt-8 border-t border-primary/10">
+      <footer className="mt-20 pt-8 border-t border-white/10">
         <div className="container mx-auto px-6">
           <div className="text-center">
-            <p className="text-muted-foreground text-sm">
+            <p className="text-gray-400 text-sm">
               © {new Date().getFullYear()} Prathamesh Tangam. All rights reserved.
             </p>
           </div>
