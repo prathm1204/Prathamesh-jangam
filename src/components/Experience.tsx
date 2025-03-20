@@ -30,12 +30,24 @@ const Experience = () => {
   const experiences = [
     {
       title: "Full Stack Developer",
-      company: "GeminiFQ Pvt Ltd, Pune",
-      period: "Oct 2024 - Present",
+      company: "GeniaTEQ",
+      companyUrl: "https://geniateq.com/",
+      period: "March 2024 - Present",
       description: [
         "A mobile application designed for controlling and managing thermal printers via Bluetooth.",
         "The app integrates with Bluetooth-enabled devices.",
         "Designed the frontend of the Bluetooth connection, and print preview."
+      ]
+    },
+    {
+      title: "Intern",
+      company: "GeniaTEQ",
+      companyUrl: "https://geniateq.com/",
+      period: "October 2023 - February 2024",
+      description: [
+        "Contributed to the development of mobile applications.",
+        "Learned and implemented frontend design principles.",
+        "Collaborated with senior developers on Bluetooth connectivity solutions."
       ]
     },
     {
@@ -101,7 +113,18 @@ const Experience = () => {
                 <div className={`${index % 2 !== 0 ? 'md:text-right md:ltr' : ''}`}>
                   <span className="text-primary inline-block text-sm font-medium mb-2">{exp.period}</span>
                   <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
-                  <p className="text-lg text-muted-foreground mb-4">{exp.company}</p>
+                  {exp.companyUrl ? (
+                    <a 
+                      href={exp.companyUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-lg text-muted-foreground mb-4 hover:text-primary transition-colors inline-block"
+                    >
+                      {exp.company}
+                    </a>
+                  ) : (
+                    <p className="text-lg text-muted-foreground mb-4">{exp.company}</p>
+                  )}
                 </div>
                 
                 <AnimatedCard 
