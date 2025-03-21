@@ -133,9 +133,9 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Right side - New image and profile avatar */}
+          {/* Right side - Only profile avatar */}
           <div className="relative order-1 md:order-2 flex flex-col items-center">
-            {/* Profile avatar positioned on top */}
+            {/* Profile avatar */}
             <div className="relative mb-6 z-10">
               <Avatar className="w-32 h-32 border-4 border-accent/20 animate-pulse-glow">
                 <AvatarImage src="/lovable-uploads/2b43f1a9-df36-45fd-9c9b-ea8d5b5e3c4e.png" alt="Prathamesh Chandrashekhar Jangam" />
@@ -144,15 +144,6 @@ const Hero = () => {
               <div className="absolute -top-2 -right-2">
                 <TechLogo variant="cpu" size={20} />
               </div>
-            </div>
-            
-            {/* The new image in a nice frame */}
-            <div className="rounded-lg overflow-hidden shadow-xl shadow-accent/10 border border-accent/20 transform transition-transform hover:scale-105">
-              <img 
-                src="/lovable-uploads/57287faa-6db0-44ec-8573-046e939d27d0.png" 
-                alt="Prathamesh working on laptop" 
-                className="max-w-full h-auto object-cover"
-              />
             </div>
           </div>
         </div>
