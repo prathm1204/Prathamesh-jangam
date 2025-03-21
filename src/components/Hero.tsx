@@ -92,52 +92,10 @@ const Hero = () => {
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid md:grid-cols-2 items-center gap-12 max-w-6xl mx-auto">
-          {/* Left side - Content and profile */}
-          <div className="text-center md:text-left order-2 md:order-1">
-            <div className="mb-8 flex flex-col md:items-start items-center">
-              <h2 className="text-xl md:text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 mb-2">
-                Prathamesh Chandrashekhar Jangam
-              </h2>
-              
-              <p className="text-accent inline-block rounded-full px-4 py-1 border-shimmer border-accent/20 mb-6 font-medium animate-fade-in">
-                Full Stack Developer
-              </p>
-              
-              <AnimatedText 
-                text="Prathamesh Chandrashekhar Jangam" 
-                tag="h1" 
-                className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-gradient"
-              />
-              <AnimatedText 
-                text="Crafting digital experiences with code and creativity" 
-                tag="p" 
-                className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto md:mx-0"
-                delay={0.5}
-              />
-
-              <div className="flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-4 mt-10 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-                <a 
-                  href="#contact"
-                  className="bg-accent text-accent-foreground px-8 py-3 rounded-full font-medium hover:bg-accent/90 transition-colors interactive shadow-lg shadow-accent/20"
-                >
-                  Get in Touch
-                </a>
-                <a 
-                  href="#projects"
-                  className="px-8 py-3 rounded-full font-medium border border-shimmer border-accent/20 hover:bg-accent/5 transition-colors interactive"
-                >
-                  View My Work
-                </a>
-              </div>
-            </div>
-          </div>
-          
-          {/* Right side - Only profile avatar */}
-          <div className="relative order-1 md:order-2 flex flex-col items-center">
-            {/* Profile avatar */}
-            <div className="relative mb-6 z-10">
-              <Avatar className="w-32 h-32 border-4 border-accent/20 animate-pulse-glow">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="mb-8 flex flex-col items-center">
+            <div className="relative">
+              <Avatar className="w-32 h-32 mb-6 border-4 border-accent/20 animate-pulse-glow">
                 <AvatarImage src="/lovable-uploads/2b43f1a9-df36-45fd-9c9b-ea8d5b5e3c4e.png" alt="Prathamesh Chandrashekhar Jangam" />
                 <AvatarFallback className="bg-accent/20">PT</AvatarFallback>
               </Avatar>
@@ -145,20 +103,55 @@ const Hero = () => {
                 <TechLogo variant="cpu" size={20} />
               </div>
             </div>
+            
+            <h2 className="text-xl md:text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 mb-2">
+              Prathamesh Chandrashekhar Jangam
+            </h2>
+            
+            <p className="text-accent inline-block rounded-full px-4 py-1 border-shimmer border-accent/20 mb-6 font-medium animate-fade-in">
+              Full Stack Developer
+            </p>
+            
+            <AnimatedText 
+              text="Prathamesh Chandrashekhar Jangam" 
+              tag="h1" 
+              className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-gradient"
+            />
+            <AnimatedText 
+              text="Crafting digital experiences with code and creativity" 
+              tag="p" 
+              className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto"
+              delay={0.5}
+            />
+          </div>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+            <a 
+              href="#contact"
+              className="bg-accent text-accent-foreground px-8 py-3 rounded-full font-medium hover:bg-accent/90 transition-colors interactive shadow-lg shadow-accent/20"
+            >
+              Get in Touch
+            </a>
+            <a 
+              href="#projects"
+              className="px-8 py-3 rounded-full font-medium border border-shimmer border-accent/20 hover:bg-accent/5 transition-colors interactive"
+            >
+              View My Work
+            </a>
+          </div>
+          
+          <div className="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
+            <a 
+              href="#about"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-accent/20 hover:bg-accent/5 transition-colors interactive"
+              aria-label="Scroll down"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
           </div>
         </div>
-      </div>
-      
-      <div className="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
-        <a 
-          href="#about"
-          className="w-10 h-10 flex items-center justify-center rounded-full border border-accent/20 hover:bg-accent/5 transition-colors interactive"
-          aria-label="Scroll down"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </a>
       </div>
     </section>
   );

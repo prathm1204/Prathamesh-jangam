@@ -1,8 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { Code, Pen, PenSquare } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -37,29 +35,10 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Modern PJ Logo */}
-        <a href="#" className="text-2xl font-bold font-display flex items-center gap-2 interactive">
-          <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-500 rounded-full blur opacity-75 animate-pulse"></div>
-            <div className="relative bg-background rounded-full p-2 flex items-center justify-center border border-accent/20 shadow-md">
-              <PenSquare className="h-5 w-5 text-accent" />
-            </div>
-          </div>
-          <span className="text-gradient bg-gradient-to-r from-purple-500 to-pink-600 font-extrabold">PJ</span>
+        <a href="#" className="text-2xl font-bold font-display">
+          <span className="text-gradient">PJ</span>
         </a>
         
-        {/* Center section with profile and full name */}
-        <div className="hidden md:flex items-center gap-4 absolute left-1/2 transform -translate-x-1/2">
-          <Avatar className="w-10 h-10 border-2 border-accent/30 shadow-md">
-            <AvatarImage src="/lovable-uploads/2b43f1a9-df36-45fd-9c9b-ea8d5b5e3c4e.png" alt="Prathamesh Chandrashekhar Jangam" />
-            <AvatarFallback className="bg-accent/20">PJ</AvatarFallback>
-          </Avatar>
-          <span className="font-semibold text-lg text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
-            Prathamesh Chandrashekhar Jangam
-          </span>
-        </div>
-        
-        {/* Navigation links */}
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <a
@@ -107,17 +86,6 @@ const Navbar = () => {
           mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
-        {/* Mobile profile section with full name */}
-        <div className="flex flex-col items-center mb-8">
-          <Avatar className="w-20 h-20 border-4 border-accent/30 shadow-lg mb-4">
-            <AvatarImage src="/lovable-uploads/2b43f1a9-df36-45fd-9c9b-ea8d5b5e3c4e.png" alt="Prathamesh Chandrashekhar Jangam" />
-            <AvatarFallback className="bg-accent/20">PJ</AvatarFallback>
-          </Avatar>
-          <span className="text-xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 text-center px-4">
-            Prathamesh Chandrashekhar Jangam
-          </span>
-        </div>
-        
         <div className="space-y-6 text-center">
           {navLinks.map((link, index) => (
             <a
