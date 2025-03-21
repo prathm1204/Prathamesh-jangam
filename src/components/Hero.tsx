@@ -96,7 +96,7 @@ const Hero = () => {
           <div className="mb-8 flex flex-col items-center">
             <div className="relative">
               <Avatar className="w-32 h-32 mb-6 border-4 border-accent/20 animate-pulse-glow">
-                <AvatarImage src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=1600&auto=format&fit=crop" alt="Prathamesh Chandrashekhar Jangam" />
+                <AvatarImage src="/lovable-uploads/2b43f1a9-df36-45fd-9c9b-ea8d5b5e3c4e.png" alt="Prathamesh Chandrashekhar Jangam" />
                 <AvatarFallback className="bg-accent/20">PT</AvatarFallback>
               </Avatar>
               <div className="absolute -top-2 -right-2">
@@ -104,7 +104,7 @@ const Hero = () => {
               </div>
             </div>
             
-            <h2 className="text-xl md:text-2xl font-medium text-accent mb-2">
+            <h2 className="text-xl md:text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 mb-2">
               Prathamesh Chandrashekhar Jangam
             </h2>
             
