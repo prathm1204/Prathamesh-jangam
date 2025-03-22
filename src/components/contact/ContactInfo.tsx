@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { Instagram, Github, Linkedin } from 'lucide-react';
+import { useTheme } from '@/components/ui/theme-provider';
+import { cn } from '@/lib/utils';
 
 interface ContactInfoItem {
   icon: React.ReactNode;
@@ -15,6 +17,8 @@ interface SocialLink {
 }
 
 const ContactInfo = () => {
+  const { theme } = useTheme();
+  
   const contactInfo: ContactInfoItem[] = [
     {
       icon: (
@@ -65,23 +69,46 @@ const ContactInfo = () => {
   ];
   
   return (
-    <div className="bg-white/10 backdrop-blur-lg border border-white/10 p-8 rounded-xl shadow-xl">
-      <h3 className="text-xl font-bold mb-8 text-white">Contact Information</h3>
+    <div className={cn(
+      "backdrop-blur-lg border p-8 rounded-xl shadow-xl",
+      theme === 'dark' 
+        ? 'bg-background/10 border-white/10'
+        : 'bg-white/10 border-accent/10'
+    )}>
+      <h3 className={cn(
+        "text-xl font-bold mb-8",
+        theme === 'dark' ? 'text-white' : 'text-foreground'
+      )}>Contact Information</h3>
       
       <div className="space-y-6">
         {contactInfo.map((info, index) => (
           <div key={index} className="flex items-start gap-4">
-            <div className="text-accent mt-1">{info.icon}</div>
+            <div className={cn(
+              "mt-1",
+              theme === 'dark' ? 'text-accent' : 'text-primary'
+            )}>{info.icon}</div>
             <div>
-              <h4 className="text-sm font-medium text-gray-400 mb-1">{info.label}</h4>
-              <p className="font-medium text-white">{info.value}</p>
+              <h4 className={cn(
+                "text-sm font-medium mb-1",
+                theme === 'dark' ? 'text-gray-400' : 'text-muted-foreground'
+              )}>{info.label}</h4>
+              <p className={cn(
+                "font-medium",
+                theme === 'dark' ? 'text-white' : 'text-foreground'
+              )}>{info.value}</p>
             </div>
           </div>
         ))}
       </div>
       
-      <div className="mt-8 pt-8 border-t border-white/10">
-        <h4 className="text-sm font-medium text-gray-400 mb-4">Connect with me</h4>
+      <div className={cn(
+        "mt-8 pt-8 border-t",
+        theme === 'dark' ? 'border-white/10' : 'border-accent/10'
+      )}>
+        <h4 className={cn(
+          "text-sm font-medium mb-4",
+          theme === 'dark' ? 'text-gray-400' : 'text-muted-foreground'
+        )}>Connect with me</h4>
         <div className="flex gap-4">
           {socialLinks.map((link) => (
             <a
@@ -89,7 +116,12 @@ const ContactInfo = () => {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-colors interactive"
+              className={cn(
+                "w-10 h-10 rounded-full flex items-center justify-center transition-colors interactive",
+                theme === 'dark' 
+                  ? 'bg-white/5 text-accent hover:bg-accent hover:text-white'
+                  : 'bg-accent/5 text-accent hover:bg-accent hover:text-white'
+              )}
               aria-label={link.name}
             >
               {link.icon}
