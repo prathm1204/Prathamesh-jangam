@@ -30,14 +30,24 @@ const About = () => {
   }, []);
   
   return (
-    <section id="about" ref={sectionRef} className="py-20 md:py-32 bg-secondary/30">
-      <div className="container mx-auto px-6">
+    <section id="about" ref={sectionRef} className="py-20 md:py-32 relative">
+      {/* Background Image Watermark */}
+      <div className="absolute inset-0 opacity-10 z-0 pointer-events-none">
+        <div 
+          className="w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: "url('/lovable-uploads/7101e465-4679-42fd-b5c9-99434bffe996.png')"
+          }}
+        ></div>
+      </div>
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <p className="text-primary inline-block rounded-full px-4 py-1 border border-primary/20 mb-6 font-medium animate-on-scroll">
             About Me
           </p>
           <AnimatedText 
-            text="Passionate Full Stack Developer with expertise in React JS, React Native, .NET, and Java" 
+            text="Passionate Full Stack Developer with expertise in React JS and .NET" 
             tag="h2" 
             className="text-3xl md:text-4xl font-display font-bold mb-6"
           />
@@ -65,7 +75,7 @@ const About = () => {
                 className="text-2xl font-display font-semibold mb-4"
               />
               <p className="text-muted-foreground mb-6">
-                I'm a passionate Full Stack Developer with extensive experience in React JS, React Native, .NET, and Java. With a strong foundation in both frontend and backend development, I enjoy creating seamless, user-friendly applications that deliver exceptional experiences.
+                I'm a passionate Full Stack Developer with extensive experience in React JS and .NET. With a strong foundation in both frontend and backend development, I enjoy creating seamless, user-friendly applications that deliver exceptional experiences.
               </p>
             </div>
             
