@@ -1,20 +1,26 @@
 
 import React from 'react';
 import { CircuitBoard, Code, Cpu, Database, Server, Terminal, Laptop, HardDrive, Network } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 interface TechLogoProps {
   className?: string;
   variant?: 'circuit' | 'code' | 'cpu' | 'database' | 'server' | 'terminal' | 'laptop' | 'harddrive' | 'network';
   size?: number;
   animated?: boolean;
+  theme?: 'light' | 'dark' | 'auto';
 }
 
 const TechLogo: React.FC<TechLogoProps> = ({ 
   className = '', 
   variant = 'circuit', 
   size = 24,
-  animated = true
+  animated = true,
+  theme: propTheme
 }) => {
+  const { theme: systemTheme } = useTheme();
+  const effectiveTheme = propTheme === 'auto' ? systemTheme : propTheme;
+  
   const renderIcon = () => {
     switch(variant) {
       case 'circuit':

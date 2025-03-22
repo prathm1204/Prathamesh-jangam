@@ -70,13 +70,17 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Stylish PJ Logo */}
+        {/* Stylish PJ Logo - hidden in light mode */}
         <a href="#" className="text-2xl font-bold font-display flex items-center">
-          <div className="relative w-10 h-10 bg-gradient-to-br from-accent via-accent/70 to-primary/50 rounded-lg flex items-center justify-center mr-2 overflow-hidden">
-            <span className="text-background font-display font-bold text-lg relative z-10">PJ</span>
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/20"></div>
-          </div>
-          <span className="hidden sm:inline-block text-gradient">Prathamesh Jangam</span>
+          {theme === 'dark' && (
+            <div className="relative w-10 h-10 bg-gradient-to-br from-accent via-accent/70 to-primary/50 rounded-lg flex items-center justify-center mr-2 overflow-hidden">
+              <span className="text-background font-display font-bold text-lg relative z-10">PJ</span>
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/20"></div>
+            </div>
+          )}
+          <span className={cn("text-gradient", theme === 'light' ? "inline-block" : "hidden sm:inline-block")}>
+            Prathamesh Jangam
+          </span>
         </a>
         
         <div className="hidden md:flex items-center space-x-6">
@@ -184,10 +188,12 @@ const Navbar = () => {
       >
         <div className="space-y-6 text-center">
           <div className="flex flex-col items-center gap-2 mb-8">
-            <div className="w-20 h-20 bg-gradient-to-br from-accent via-accent/70 to-primary/50 rounded-xl flex items-center justify-center mb-4 relative overflow-hidden">
-              <span className="text-background font-display font-bold text-3xl relative z-10">PJ</span>
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/20"></div>
-            </div>
+            {theme === 'dark' && (
+              <div className="w-20 h-20 bg-gradient-to-br from-accent via-accent/70 to-primary/50 rounded-xl flex items-center justify-center mb-4 relative overflow-hidden">
+                <span className="text-background font-display font-bold text-3xl relative z-10">PJ</span>
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/20"></div>
+              </div>
+            )}
             <Avatar className="w-16 h-16 border-2 border-accent/30 mb-2">
               <AvatarImage src="/lovable-uploads/2b43f1a9-df36-45fd-9c9b-ea8d5b5e3c4e.png" alt="Prathamesh Chandrashekhar Jangam" />
               <AvatarFallback>PJ</AvatarFallback>
