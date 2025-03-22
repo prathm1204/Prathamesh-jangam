@@ -2,10 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
-import { Moon, Sun } from 'lucide-react';
+import { Moon, Sun, Instagram, Github, Linkedin } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
+import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group';
+import { Switch } from './ui/switch';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -40,21 +42,44 @@ const Navbar = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
   
+  const socialLinks = [
+    {
+      name: "GitHub",
+      url: "https://github.com/",
+      icon: <Github className="h-4 w-4" />
+    },
+    {
+      name: "LinkedIn",
+      url: "https://linkedin.com/",
+      icon: <Linkedin className="h-4 w-4" />
+    },
+    {
+      name: "Instagram",
+      url: "https://instagram.com/",
+      icon: <Instagram className="h-4 w-4" />
+    }
+  ];
+  
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300",
         scrolled 
-          ? "bg-background/80 backdrop-blur-md shadow-sm dark:bg-background/50" 
+          ? "bg-background/80 backdrop-blur-md shadow-sm" 
           : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="text-2xl font-bold font-display">
-          <span className="text-gradient">PJ</span>
+        {/* Stylish PJ Logo */}
+        <a href="#" className="text-2xl font-bold font-display flex items-center">
+          <div className="relative w-10 h-10 bg-gradient-to-br from-accent via-accent/70 to-primary/50 rounded-lg flex items-center justify-center mr-2 overflow-hidden">
+            <span className="text-background font-display font-bold text-lg relative z-10">PJ</span>
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/20"></div>
+          </div>
+          <span className="hidden sm:inline-block text-gradient">Prathamesh Jangam</span>
         </a>
         
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6">
           <div className="flex items-center gap-6">
             {navLinks.map((link) => (
               <a
@@ -76,26 +101,49 @@ const Navbar = () => {
               <span className="text-sm font-medium hidden lg:inline">Prathamesh Chandrashekhar Jangam</span>
             </div>
             
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  onClick={toggleTheme}
-                  className="rounded-full bg-accent/10 hover:bg-accent/20"
-                >
-                  {mounted && theme === 'dark' ? (
-                    <Sun className="h-4 w-4" />
-                  ) : (
-                    <Moon className="h-4 w-4" />
-                  )}
-                  <span className="sr-only">Toggle theme</span>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}</p>
-              </TooltipContent>
-            </Tooltip>
+            {/* Theme Toggle with both Button and Switch options */}
+            <div className="flex items-center gap-2">
+              <ToggleGroup type="single" value={theme} onValueChange={(value) => value && setTheme(value)}>
+                <ToggleGroupItem value="light" size="sm" className="rounded-l-md p-1 h-8">
+                  <Sun className="h-4 w-4" />
+                </ToggleGroupItem>
+                <ToggleGroupItem value="dark" size="sm" className="rounded-r-md p-1 h-8">
+                  <Moon className="h-4 w-4" />
+                </ToggleGroupItem>
+              </ToggleGroup>
+              
+              <div className="hidden lg:flex items-center gap-2 pl-2">
+                <Switch 
+                  checked={theme === 'dark'} 
+                  onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')} 
+                  className="data-[state=checked]:bg-accent"
+                />
+                <span className="text-xs text-muted-foreground">
+                  {theme === 'dark' ? 'Dark' : 'Light'}
+                </span>
+              </div>
+            </div>
+            
+            {/* Social Links */}
+            <div className="hidden lg:flex items-center">
+              {socialLinks.map((link) => (
+                <Tooltip key={link.name}>
+                  <TooltipTrigger asChild>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-accent transition-colors rounded-full"
+                    >
+                      {link.icon}
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{link.name}</p>
+                  </TooltipContent>
+                </Tooltip>
+              ))}
+            </div>
           </div>
         </div>
         
@@ -136,25 +184,54 @@ const Navbar = () => {
       >
         <div className="space-y-6 text-center">
           <div className="flex flex-col items-center gap-2 mb-8">
+            <div className="w-20 h-20 bg-gradient-to-br from-accent via-accent/70 to-primary/50 rounded-xl flex items-center justify-center mb-4 relative overflow-hidden">
+              <span className="text-background font-display font-bold text-3xl relative z-10">PJ</span>
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/20"></div>
+            </div>
             <Avatar className="w-16 h-16 border-2 border-accent/30 mb-2">
               <AvatarImage src="/lovable-uploads/2b43f1a9-df36-45fd-9c9b-ea8d5b5e3c4e.png" alt="Prathamesh Chandrashekhar Jangam" />
               <AvatarFallback>PJ</AvatarFallback>
             </Avatar>
             <span className="text-lg font-medium">Prathamesh Chandrashekhar Jangam</span>
             
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={toggleTheme}
-              className="mt-2 rounded-full bg-accent/10 hover:bg-accent/20"
-            >
-              {mounted && theme === 'dark' ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-              <span className="sr-only">Toggle theme</span>
-            </Button>
+            {/* Theme toggles for mobile */}
+            <div className="flex items-center gap-3 mt-4">
+              <ToggleGroup type="single" value={theme} onValueChange={(value) => value && setTheme(value)}>
+                <ToggleGroupItem value="light" size="sm" className="rounded-l-md p-1 h-8">
+                  <Sun className="h-4 w-4" />
+                </ToggleGroupItem>
+                <ToggleGroupItem value="dark" size="sm" className="rounded-r-md p-1 h-8">
+                  <Moon className="h-4 w-4" />
+                </ToggleGroupItem>
+              </ToggleGroup>
+              
+              <div className="flex items-center gap-2">
+                <Switch 
+                  checked={theme === 'dark'} 
+                  onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
+                  className="data-[state=checked]:bg-accent"
+                />
+                <span className="text-xs text-muted-foreground">
+                  {theme === 'dark' ? 'Dark' : 'Light'}
+                </span>
+              </div>
+            </div>
+            
+            {/* Social links for mobile */}
+            <div className="flex items-center gap-3 mt-4">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-colors interactive"
+                  aria-label={link.name}
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
           </div>
           
           {navLinks.map((link, index) => (
