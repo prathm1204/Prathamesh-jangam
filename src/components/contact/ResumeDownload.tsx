@@ -9,7 +9,8 @@ const ResumeDownload = () => {
         Get a copy of my resume for more details about my experience and skills.
       </p>
       <a 
-        href="#" 
+       href="/resume.pdf" 
+        download="Prathamesh.Jangam Full Stack Developer.pdf"
         className="inline-flex items-center gap-2 bg-accent/20 text-accent hover:text-white px-6 py-3 rounded-lg font-medium hover:bg-accent/40 transition-colors interactive"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

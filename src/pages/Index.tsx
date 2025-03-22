@@ -1,6 +1,5 @@
 
 import React, { useEffect } from 'react';
-import { useTheme } from 'next-themes';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -13,8 +12,6 @@ import TechBackground from '../components/ui/TechBackground';
 import TechLogo from '../components/ui/TechLogo';
 
 const Index = () => {
-  const { theme } = useTheme();
-  
   // Add smooth scrolling behavior
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
@@ -56,7 +53,7 @@ const Index = () => {
     };
   }, []);
   
-  // Fixed tech logos in corners of the page - only visible in dark mode
+  // Fixed tech logos in corners of the page
   const fixedLogos = [
     { variant: 'code', size: 20, position: 'top-4 left-4', delay: 0 },
     { variant: 'cpu', size: 18, position: 'top-4 right-4', delay: 1 },
@@ -66,11 +63,11 @@ const Index = () => {
   
   return (
     <div className="relative">
-      {/* Technical Background - only visible in dark mode */}
-      {theme === 'dark' && <TechBackground density={25} speed={0.5} />}
+      {/* Technical Background */}
+      <TechBackground density={25} speed={0.5} />
       
-      {/* Fixed Tech Logos in corners - only visible in dark mode */}
-      {theme === 'dark' && fixedLogos.map((logo, index) => (
+      {/* Fixed Tech Logos in corners */}
+      {fixedLogos.map((logo, index) => (
         <div
           key={`fixed-logo-${index}`}
           className={`fixed ${logo.position} z-10 hidden md:block`}

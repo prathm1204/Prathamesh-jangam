@@ -36,8 +36,11 @@ const Experience = () => {
       description: [
         "A mobile application designed for controlling and managing thermal printers via Bluetooth.",
         "The app integrates with Bluetooth-enabled devices.",
-        "Designed the frontend of the Bluetooth connection, and print preview."
+        "Designed the frontend of the Bluetooth connection, and print preview.",
+        "Falcon Couriers is a fast, reliable, and efficient courier management system built with React and Node.js.",
+         "It streamlines package tracking, delivery scheduling, and real-time updates to ensure seamless logistics operations."
       ]
+      
     },
     {
       title: "Intern",
@@ -49,9 +52,10 @@ const Experience = () => {
         "Learned and implemented frontend design principles.",
         "Collaborated with senior developers on Bluetooth connectivity solutions."
       ]
+        
     },
     {
-      title: "Sernik Printer Application",
+      title: "Seznik Printer Application",
       company: "GeniaTEQ",
       companyUrl: "https://geniateq.com/",
       period: "Company Project",
@@ -62,7 +66,7 @@ const Experience = () => {
       ]
     },
     {
-      title: "Dut Net Intern",
+      title: "Dot Net Developer Intern",
       company: "College Internship - Asma Institute of Management, Pune",
       period: "Feb 2024 - July 2024",
       description: [
@@ -75,6 +79,7 @@ const Experience = () => {
     {
       title: "Master of Computer Application (MCA)",
       company: "Savitribai Phule Pune University",
+      companyUrl: "http://www.unipune.ac.in/",
       period: "CGPA: 8.46",
       description: [
         "Coursework focuses on advanced computer applications, programming, software development.",
